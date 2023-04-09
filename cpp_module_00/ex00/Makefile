@@ -6,7 +6,7 @@
 #    By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/09 19:56:06 by edpaulin          #+#    #+#              #
-#    Updated: 2023/04/09 20:13:52 by edpaulin         ###   ########.fr        #
+#    Updated: 2023/04/09 20:19:51 by edpaulin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,3 +36,5 @@ fclean: clean
 	rm $(NAME)
 
 re: fclean all
+
+.PHONY: all clean fclean re
