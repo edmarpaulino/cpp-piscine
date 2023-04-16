@@ -6,7 +6,7 @@
 #    By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/09 19:56:06 by edpaulin          #+#    #+#              #
-#    Updated: 2023/04/15 15:49:32 by edpaulin         ###   ########.fr        #
+#    Updated: 2023/04/16 17:28:42 by edpaulin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,8 @@ NAME = megaphone
 
 SRC = megaphone.cpp
 
-OBJ = $(SRC:.cpp=.o)
+OBJ_DIR = obj
+OBJ = $(addprefix $(OBJ_DIR)/,$(SRC:.cpp=.o))
 
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
@@ -26,14 +27,15 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
 
-%.o: %.cpp
+$(OBJ_DIR)/%.o: %.cpp
+	mkdir $(@D)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm $(OBJ)
+	rm -rf $(OBJ_DIR)
 
 fclean: clean
-	rm $(NAME)
+	rm -f $(NAME)
 
 re: fclean all
 
