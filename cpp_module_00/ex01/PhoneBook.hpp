@@ -6,14 +6,18 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 16:17:47 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/04/16 17:58:59 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/04/16 20:09:37 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHONEBOOK_H
 # define PHONEBOOK_H
 
-# define MAX_CONTACTS 8
+# define MAX_CONTACTS 3
+# define LAST (MAX_CONTACTS - 1)
+
+# include <iostream>
+# include <string>
 
 # include "Contact.hpp"
 
@@ -24,8 +28,24 @@ class PhoneBook
 
 		int		_index;
 		Contact _contacts[MAX_CONTACTS];
+		
+		std::string _firstName;
+		std::string _lastName;
+		std::string _nickname;
+		std::string _phoneNumber;
+		std::string _darkestSecret;
+
+		void _printAllContacts(void) const;
+
+		void _requestAllFields(void);
+		void _requestField(std::string prompt, std::string &field);
+		void _createNewContact(void);
+		void _updateLastContact(void);
+		void _clearFields(void);
 
 	public:
+
+		void add(void);
 
 		PhoneBook(void);
 		~PhoneBook(void);
