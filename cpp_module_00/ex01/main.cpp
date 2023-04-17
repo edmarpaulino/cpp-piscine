@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 16:57:04 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/04/16 20:13:10 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/04/17 19:11:23 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,16 @@ int main(void)
 	std::string command;
 	bool running = true;
 
-	while (running)
+	while (running && !std::cin.eof())
 	{
 		std::cout << "Enter your command: ";
 		std::getline(std::cin, command);
+
+		if (std::cin.eof())
+		{
+			std::cout << std::endl;
+			return 0;
+		}
 
 		if (command == "ADD")
 			phoneBook.add();

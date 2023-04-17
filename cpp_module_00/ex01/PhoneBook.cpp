@@ -6,13 +6,13 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 16:22:47 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/04/16 20:13:31 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/04/17 19:22:13 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 
-PhoneBook::PhoneBook(void):	_index(0)
+PhoneBook::PhoneBook(void):	_index(0), _length(0)
 {
 	this->_clearFields();
 	
@@ -27,31 +27,59 @@ PhoneBook::~PhoneBook(void)
 void PhoneBook::add(void)
 {
 	this->_requestAllFields();
+
+	if (std::cin.eof())
+	{
+		return;
+	}
 	
 	this->_index < MAX_CONTACTS 
 	? this->_createNewContact() 
 	: this->_updateLastContact();
 
 	this->_clearFields();
-	this->_printAllContacts();
+	// this->_printAllContacts();
 
 	return;
 }
 
 void PhoneBook::_requestAllFields(void)
 {
-	this->_requestField("first name", this->_firstName);
-	this->_requestField("last name", this->_lastName);
-	this->_requestField("nickname", this->_nickname);
-	this->_requestField("phone number", this->_phoneNumber);
-	this->_requestField("darkest secret", this->_darkestSecret);
+	std::string fields[5] = {
+		"first name",
+		"last name",
+		"nickname",
+		"phone number",
+		"darkest secret"
+	};
+
+	for (int i = 0; i < 5; i++)
+	{
+		this->_requestField(fields[i], this->_firstName);
+		if (std::cin.eof())
+		{
+			std::cout << std::endl;
+			return;
+		}
+	}
+
+	return;
 }
 
-void PhoneBook::_requestField(std::string prompt, std::string &field)
+void PhoneBook::_requestField(std::string field, std::string &fieldStorage)
 {
-	std::cout << "Enter " << prompt << ": ";
-	std::getline(std::cin, field);
-	
+	std::cout << "Enter " << field << ": ";
+	std::getline(std::cin, fieldStorage);
+
+	while (fieldStorage.empty() && !std::cin.eof())
+	{
+		std::cout
+			<< "The fieldStorage '"
+			<< field <<
+			"' cannot be empty... Enter a value: ";
+		std::getline(std::cin, fieldStorage);
+	}
+
 	return;
 }
 
@@ -59,7 +87,6 @@ void PhoneBook::_createNewContact(void)
 {
 	Contact contact;
 
-	std::cout << "Create new contact" << std::endl;
 	contact.setFirstName(this->_firstName);
 	contact.setLastName(this->_lastName);
 	contact.setNickname(this->_nickname);
@@ -68,13 +95,13 @@ void PhoneBook::_createNewContact(void)
 
 	this->_contacts[this->_index] = contact;
 	this->_index++;
+	this->_length++;
 
 	return;
 }
 
 void PhoneBook::_updateLastContact(void)
 {
-	std::cout << "Update last contact" << std::endl;
 	this->_contacts[LAST].setFirstName(this->_firstName);
 	this->_contacts[LAST].setLastName(this->_lastName);
 	this->_contacts[LAST].setNickname(this->_nickname);
@@ -86,15 +113,10 @@ void PhoneBook::_updateLastContact(void)
 
 void PhoneBook::_printAllContacts(void) const
 {
-	for (int i = 0; i < MAX_CONTACTS; i++)
+	for (int i = 0; i < this->_length; i++)
 	{
-		std::cout << "------------------------------------------------" << std::endl;
-		std::cout << "First name: " << this->_contacts[i].getFirstName() << std::endl;
-		std::cout << "Last name: " << this->_contacts[i].getLastName() << std::endl;
-		std::cout << "Nickname: " << this->_contacts[i].getNickname() << std::endl;
-		std::cout << "Phone number: " << this->_contacts[i].getPhoneNumber() << std::endl;
-		std::cout << "Darkest secret: " << this->_contacts[i].getDarkestSecret() << std::endl;
-		std::cout << "------------------------------------------------" << std::endl;
+		this->_contacts[i].print();
+		std::cout << std::endl << std::endl;
 	}
 
 	return;

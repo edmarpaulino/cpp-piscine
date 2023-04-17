@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 16:17:47 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/04/16 20:09:37 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/04/17 18:36:41 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ class PhoneBook
 	private:
 
 		int		_index;
+		int		_length;
 		Contact _contacts[MAX_CONTACTS];
 		
 		std::string _firstName;
