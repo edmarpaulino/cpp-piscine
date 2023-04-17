@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 16:22:47 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/04/17 19:22:13 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/04/17 19:57:31 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,14 @@ void PhoneBook::add(void)
 	: this->_updateLastContact();
 
 	this->_clearFields();
-	// this->_printAllContacts();
+	this->_printAllContacts();
 
 	return;
 }
 
 void PhoneBook::_requestAllFields(void)
 {
-	std::string fields[5] = {
+	std::string fields[NUM_FIELDS] = {
 		"first name",
 		"last name",
 		"nickname",
@@ -53,7 +53,7 @@ void PhoneBook::_requestAllFields(void)
 		"darkest secret"
 	};
 
-	for (int i = 0; i < 5; i++)
+	for (int i = 0; i < NUM_FIELDS; i++)
 	{
 		this->_requestField(fields[i], this->_firstName);
 		if (std::cin.eof())

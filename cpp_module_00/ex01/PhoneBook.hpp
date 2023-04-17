@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 16:17:47 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/04/17 18:36:41 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/04/17 19:56:35 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # define MAX_CONTACTS 3
 # define LAST (MAX_CONTACTS - 1)
+# define NUM_FIELDS 5
 
 # include <iostream>
 # include <string>
@@ -39,7 +40,7 @@ class PhoneBook
 		void _printAllContacts(void) const;
 
 		void _requestAllFields(void);
-		void _requestField(std::string prompt, std::string &field);
+		void _requestField(std::string prompt, std::string &fieldStorage);
 		void _createNewContact(void);
 		void _updateLastContact(void);
 		void _clearFields(void);
