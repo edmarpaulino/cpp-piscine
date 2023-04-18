@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 16:22:47 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/04/17 19:57:31 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/04/17 21:10:47 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,29 +38,50 @@ void PhoneBook::add(void)
 	: this->_updateLastContact();
 
 	this->_clearFields();
-	this->_printAllContacts();
 
+	return;
+}
+
+void PhoneBook::search(void) const
+{
 	return;
 }
 
 void PhoneBook::_requestAllFields(void)
 {
-	std::string fields[NUM_FIELDS] = {
-		"first name",
-		"last name",
-		"nickname",
-		"phone number",
-		"darkest secret"
-	};
-
-	for (int i = 0; i < NUM_FIELDS; i++)
+	this->_requestField("first name", this->_firstName);
+	if (std::cin.eof())
 	{
-		this->_requestField(fields[i], this->_firstName);
-		if (std::cin.eof())
-		{
-			std::cout << std::endl;
-			return;
-		}
+		std::cout << std::endl;
+		return;
+	}
+
+	this->_requestField("last name", this->_lastName);
+	if (std::cin.eof())
+	{
+		std::cout << std::endl;
+		return;
+	}
+
+	this->_requestField("nickname", this->_nickname);
+	if (std::cin.eof())
+	{
+		std::cout << std::endl;
+		return;
+	}
+
+	this->_requestField("phone number", this->_phoneNumber);
+	if (std::cin.eof())
+	{
+		std::cout << std::endl;
+		return;
+	}
+
+	this->_requestField("darkest secret", this->_darkestSecret);
+	if (std::cin.eof())
+	{
+		std::cout << std::endl;
+		return;
 	}
 
 	return;
@@ -71,6 +92,7 @@ void PhoneBook::_requestField(std::string field, std::string &fieldStorage)
 	std::cout << "Enter " << field << ": ";
 	std::getline(std::cin, fieldStorage);
 
+	// TODO: Validate fields
 	while (fieldStorage.empty() && !std::cin.eof())
 	{
 		std::cout
@@ -107,17 +129,6 @@ void PhoneBook::_updateLastContact(void)
 	this->_contacts[LAST].setNickname(this->_nickname);
 	this->_contacts[LAST].setPhoneNumber(this->_phoneNumber);
 	this->_contacts[LAST].setDarkestSecret(this->_darkestSecret);
-
-	return;
-}
-
-void PhoneBook::_printAllContacts(void) const
-{
-	for (int i = 0; i < this->_length; i++)
-	{
-		this->_contacts[i].print();
-		std::cout << std::endl << std::endl;
-	}
 
 	return;
 }

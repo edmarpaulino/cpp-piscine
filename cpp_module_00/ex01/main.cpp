@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 16:57:04 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/04/17 19:11:23 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/04/17 20:20:43 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int main(void)
 		if (command == "ADD")
 			phoneBook.add();
 		else if (command == "SEARCH")
-			std::cout << "searched" << std::endl;
+			phoneBook.search();
 		else if (command == "EXIT")
 			running = false;
 		else

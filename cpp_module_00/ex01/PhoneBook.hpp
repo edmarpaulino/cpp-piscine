@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 16:17:47 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/04/17 19:56:35 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/04/17 20:14:32 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ class PhoneBook
 	public:
 
 		void add(void);
+		void search(void) const;
 
 		PhoneBook(void);
 		~PhoneBook(void);
