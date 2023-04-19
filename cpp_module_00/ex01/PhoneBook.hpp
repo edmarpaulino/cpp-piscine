@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 16:17:47 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/04/17 20:14:32 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/04/18 21:26:58 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,26 @@
 
 # define MAX_CONTACTS 3
 # define LAST (MAX_CONTACTS - 1)
-# define NUM_FIELDS 5
+# define WIDTH 10
+# define SPACE ' '
 
 # include <iostream>
 # include <string>
+# include <iomanip>
+# include <cstdlib>
 
 # include "Contact.hpp"
 
 class PhoneBook
 {
+
+	public:
+
+		void add(void);
+		void search(void) const;
+
+		PhoneBook(void);
+		~PhoneBook(void);
 
 	private:
 
@@ -40,19 +51,16 @@ class PhoneBook
 		void _printAllContacts(void) const;
 
 		void _requestAllFields(void);
-		void _requestField(std::string prompt, std::string &fieldStorage);
+		void _requestField(std::string prompt, std::string& fieldStorage);
 		void _createNewContact(void);
 		void _updateLastContact(void);
+		void _printSearch(void) const;
+		void _printHeader(void) const;
+		void _printRow(int index) const;
+		void _printFooter(void) const;
+		void _truncateString(std::string& str) const;
+		int _validateSearchIndex(std::string searchIndex) const;
 		void _clearFields(void);
-
-	public:
-
-		void add(void);
-		void search(void) const;
-
-		PhoneBook(void);
-		~PhoneBook(void);
-
 };
 
 #endif
