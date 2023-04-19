@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 16:22:47 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/04/18 21:28:17 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/04/19 20:44:00 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void PhoneBook::_requestAllFields(void)
 	this->_requestField("first name", this->_firstName);
 	this->_requestField("last name", this->_lastName);
 	this->_requestField("nickname", this->_nickname);
-	this->_requestField("phone number", this->_phoneNumber);
+	this->_requestPhoneField("phone number", this->_phoneNumber);
 	this->_requestField("darkest secret", this->_darkestSecret);
 
 	if (std::cin.eof())
@@ -98,17 +98,67 @@ void PhoneBook::_requestField(std::string field, std::string& fieldStorage)
 	std::cout << "Enter " << field << ": ";
 	std::getline(std::cin, fieldStorage);
 
-	// TODO: Validate fields
-	while (fieldStorage.empty() && !std::cin.eof())
+	while (!std::cin.eof()
+	&& (fieldStorage.empty() || this->_isEmptyField(fieldStorage)))
 	{
-		std::cout
-			<< "The fieldStorage '"
-			<< field <<
-			"' cannot be empty... Enter a value: ";
+		std::cout << "The '" << field << "' cannot be empty." << std::endl
+			<< "Enter a valid " << field << ": ";
 		std::getline(std::cin, fieldStorage);
 	}
 
 	return;
+}
+
+void PhoneBook::_requestPhoneField(std::string field, std::string& fieldStorage)
+{
+	if (std::cin.eof())
+	{
+		return;
+	}
+
+	std::cout << "Enter " << field << ": ";
+	std::getline(std::cin, fieldStorage);
+
+	while (!std::cin.eof()
+	&& (fieldStorage.empty()
+	|| this->_isEmptyField(fieldStorage)
+	|| !this->_hasOnlyNumbers(fieldStorage)))
+	{
+		std::cout << "The '" << field << "' is numeric and cannot be empty."
+			<< std::endl
+			<< "Enter a valid " << field << ": ";
+		std::getline(std::cin, fieldStorage);
+	}
+
+	return;
+}
+
+bool PhoneBook::_hasOnlyNumbers(std::string fieldStorage) const
+{
+	std::string::iterator it;
+	for (it = fieldStorage.begin(); it != fieldStorage.end(); it++)
+	{
+		if (!std::isdigit(*it))
+		{
+			return false;
+		}
+	}
+
+	return true;
+}
+
+bool PhoneBook::_isEmptyField(std::string fieldStorage) const
+{
+	std::string::iterator it;
+	for (it = fieldStorage.begin(); it != fieldStorage.end(); it++)
+	{
+		if (!std::isspace(*it))
+		{
+			return false;
+		}
+	}
+
+	return true;
 }
 
 void PhoneBook::_createNewContact(void)

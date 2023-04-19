@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 16:17:47 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/04/18 21:26:58 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/04/19 20:27:49 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,9 @@ class PhoneBook
 
 		void _requestAllFields(void);
 		void _requestField(std::string prompt, std::string& fieldStorage);
+		void _requestPhoneField(std::string field, std::string& fieldStorage);
+		bool _isEmptyField(std::string fieldStorage) const;
+		bool _hasOnlyNumbers(std::string fieldStorage) const;
 		void _createNewContact(void);
 		void _updateLastContact(void);
 		void _printSearch(void) const;
