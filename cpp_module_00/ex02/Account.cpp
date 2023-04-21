@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 20:55:39 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/04/21 15:42:18 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/04/21 18:02:08 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,7 +132,7 @@ bool Account::makeWithdrawal(int withdrawal)
 	this->_nbWithdrawals++;
 	Account::_totalNbWithdrawals++;
 	std::cout << "index:" << this->_accountIndex
-		<< ";p_amout:" << p_amount
+		<< ";p_amount:" << p_amount
 		<< ";withdrawal:" << withdrawal
 		<< ";amount:" << this->_amount
 		<< ";nb_withdrawals:" << this->_nbWithdrawals
@@ -166,7 +166,7 @@ void Account::_displayTimestamp(void)
 
 	time(&rawtime);
 	timeinfo = localtime(&rawtime);
-	strftime(buffer, 16, "%Y%m%d_%I%M%S", timeinfo);
+	strftime(buffer, 16, "%Y%m%d_%H%M%S", timeinfo);
 	
 	std::cout << "[" << buffer << "] ";
 	
