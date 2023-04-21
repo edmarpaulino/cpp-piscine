@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 20:55:39 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/04/20 21:20:55 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/04/21 15:42:18 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,22 +26,39 @@ _nbWithdrawals(0)
 {
 	Account::_nbAccounts++;
 	Account::_totalAmount += initial_deposit;
+	
 	this->_accountIndex = Account::_nbAccounts - 1;
 
 	Account::_displayTimestamp();
-	std::cout << "index:" << this->_accountIndex << ";"
-		<< "amount:" << this->_amount << ";"
-		<< "created" << std::endl;
+	std::cout << "index:" << this->_accountIndex
+		<< ";amount:" << this->_amount
+		<< ";created" << std::endl;
 
+	return;
+}
+
+Account::Account(void) :
+_accountIndex(0),
+_amount(0),
+_nbDeposits(0),
+_nbWithdrawals(0)
+{
+	Account::_nbAccounts++;
+	this->_accountIndex = Account::_nbAccounts - 1;
+	
+	Account::_displayTimestamp();
+	std::cout << "index:" << this->_accountIndex
+		<< ";amount:" << this->_amount
+		<< ";created" << std::endl;
 	return;
 }
 
 Account::~Account(void)
 {
 	Account::_displayTimestamp();
-	std::cout << "index:" << this->_accountIndex << ";"
-		<< "amount:" << this->_amount << ";"
-		<< "closed" << std::endl;
+	std::cout << "index:" << this->_accountIndex
+		<< ";amount:" << this->_amount
+		<< ";closed" << std::endl;
 
 	return;
 }
@@ -69,10 +86,10 @@ int Account::getNbWithdrawals(void)
 void Account::displayAccountsInfos(void)
 {
 	Account::_displayTimestamp();
-	std::cout << "accounts:" << Account::_nbAccounts << ";"
-		<< "total:" << Account::_totalAmount << ";"
-		<< "deposits:" << Account::_totalNbDeposits << ";" 
-		<< "withdrawals:" << Account::_totalNbWithdrawals << ";"
+	std::cout << "accounts:" << Account::_nbAccounts
+		<< ";total:" << Account::_totalAmount
+		<< ";deposits:" << Account::_totalNbDeposits
+		<< ";withdrawals:" << Account::_totalNbWithdrawals
 		<< std::endl;
 
 	return;
@@ -100,7 +117,7 @@ bool Account::makeWithdrawal(int withdrawal)
 {
 	Account::_displayTimestamp();
 	int p_amount = this->_amount;
-	if (this->_amount - withdrawal < 0)
+	if (this->_amount - withdrawal <= 0)
 	{
 		std::cout << "index:" << this->_accountIndex
 			<< ";p_amount:" << p_amount
