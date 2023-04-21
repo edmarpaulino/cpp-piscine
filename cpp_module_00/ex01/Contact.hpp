@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 16:19:19 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/04/18 19:54:45 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/04/21 12:05:21 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define CONTACT_H
 
 # include <iostream>
-# include <iomanip>
 
 class Contact
 {

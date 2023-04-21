@@ -6,12 +6,11 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 16:23:29 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/04/18 19:56:34 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/04/21 12:05:05 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Contact.hpp"
-#include <iomanip>
 
 void Contact::setFirstName(std::string firstName)
 {
