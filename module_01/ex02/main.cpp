@@ -6,13 +6,13 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/22 16:35:00 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/04/22 16:48:13 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/04/24 20:41:13 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 
-int main()
+int main(void)
 {
 	std::string brain("HI THIS IS BRAIN");
 	std::string* stringPtr = &brain;

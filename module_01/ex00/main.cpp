@@ -6,13 +6,13 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/22 15:06:11 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/04/22 16:31:19 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/04/24 20:38:45 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
 
-int main()
+int main(void)
 {
 	Zombie* zombie = newZombie("Wesker");
 

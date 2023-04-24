@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/23 18:33:12 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/04/23 21:19:05 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/04/24 20:44:04 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ class FileReader
 	public:
 		FileReader(std::string filename);
 		~FileReader(void);
+
 		std::string read(void);
 
 	private:

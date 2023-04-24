@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 18:55:00 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/04/24 20:28:37 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/04/24 20:45:32 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ class Harl
 	public:
 		Harl(void);
 		~Harl(void);
+
 		void complain(std::string level);
 
 	private:
