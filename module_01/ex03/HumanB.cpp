@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/22 17:17:07 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/04/24 20:42:20 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/04/26 20:26:01 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ HumanB::~HumanB(void)
 	return;
 }
 
-void HumanB::setWeapon(Weapon &weapon)
+void HumanB::setWeapon(Weapon& weapon)
 {
 	this->_weapon = &weapon;
 
