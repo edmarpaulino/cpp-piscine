@@ -6,16 +6,14 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/23 12:19:25 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/04/23 21:18:13 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/05/01 12:19:21 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <exception>
 
-#include "FileReader.hpp"
-#include "FileWriter.hpp"
-#include "utils.hpp"
+#include "Replacer.hpp"
 
 int main(int argc, char *argv[])
 {
@@ -30,12 +28,7 @@ int main(int argc, char *argv[])
 		std::string from(argv[2]);
 		std::string to(argv[3]);
 
-		FileReader fr(filename);
-		FileWriter fw(filename + ".replace");
-
-		std::string content(replaceAll(fr.read(), from, to));
-
-		fw.write(content);
+		Replacer::replaceFile(filename, from, to);
 
 		return 0;
 	}

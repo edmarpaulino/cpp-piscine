@@ -6,7 +6,7 @@
 #    By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/09 19:56:06 by edpaulin          #+#    #+#              #
-#    Updated: 2023/04/24 18:53:59 by edpaulin         ###   ########.fr        #
+#    Updated: 2023/05/01 12:19:38 by edpaulin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 
 NAME = sifl
 
-SRC = main.cpp FileReader.cpp FileWriter.cpp utils.cpp
+SRC = main.cpp FileReader.cpp FileWriter.cpp Replacer.cpp
 
 OBJ_DIR = obj
 OBJ = $(addprefix $(OBJ_DIR)/,$(SRC:.cpp=.o))

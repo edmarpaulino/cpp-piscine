@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/23 19:17:12 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/04/24 20:44:11 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/05/01 11:57:25 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ FileWriter::FileWriter(std::string filename)
 
 	if (!this->_file.is_open())
 	{
-		throw std::runtime_error("Failed to create file/File not found");
+		throw std::runtime_error("Unable to open " + filename + ".");
 	}
 
 	return;

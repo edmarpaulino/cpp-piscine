@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/23 19:14:27 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/04/24 20:44:18 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/05/01 13:13:28 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,14 @@
 
 class FileWriter
 {
-	public:
-		FileWriter(std::string filename);
-		~FileWriter(void);
+public:
+	FileWriter(std::string filename);
+	~FileWriter(void);
 
-		void write(std::string content);
+	void write(std::string content);
 
-	private:
-		std::ofstream _file;
+private:
+	std::ofstream _file;
 };
 
 #endif
