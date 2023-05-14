@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/22 15:11:46 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/04/22 16:27:53 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/05/01 19:04:36 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ class Zombie
 {
 	public:
 		Zombie(void);
-		Zombie(std::string name);
 		~Zombie(void);
 
 		void setName(std::string name);

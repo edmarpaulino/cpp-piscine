@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 18:55:23 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/04/24 20:52:49 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/05/01 20:25:33 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,7 @@ void Harl::complain(std::string level)
 	}
 
 	throw std::invalid_argument(
-		"Invalid level entry. "
-		"Enter a valid level: DEBUG, INFO, WARNING or ERROR."
+		"[ Probably complaining about insignificant problems ]"
 	);
 
 	return;
@@ -59,6 +58,7 @@ void Harl::debug(void)
 		<< "my 7XL-double-cheese-triple-pickle-special ketchup burger."
 		<< std::endl
 		<< "I really do!"
+		<< std::endl
 		<< std::endl;
 
 	return;
@@ -74,6 +74,7 @@ void Harl::info(void)
 		<< "You didn’t put enough bacon in my burger! "
 		<< std::endl
 		<< "If you did, I wouldn’t be asking for more!"
+		<< std::endl
 		<< std::endl;
 
 	return;
@@ -88,6 +89,7 @@ void Harl::warning(void)
 		<< std::endl
 		<< "I’ve been coming for years whereas you started working "
 		<< "here since last month."
+		<< std::endl
 		<< std::endl;
 
 	return;
@@ -99,6 +101,7 @@ void Harl::error(void)
 		<< "[ ERROR ]"
 		<< std::endl
 		<< "This is unacceptable! I want to speak to the manager now."
+		<< std::endl
 		<< std::endl;
 
 	return;

@@ -6,18 +6,13 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/22 15:14:06 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/04/24 20:39:57 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/05/01 19:04:45 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
 
 Zombie::Zombie(void)
-{
-	return;
-}
-
-Zombie::Zombie(std::string name): _name(name)
 {
 	return;
 }

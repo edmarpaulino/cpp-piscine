@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/22 16:03:17 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/04/24 20:39:35 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/05/01 19:09:35 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ int main(void)
 
 	Zombie* horde = zombieHorde(hordeSize, "Ganado");
 
-	for (int i = 0; i < hordeSize; i++)
+	for (int zombieNb = 0; zombieNb < hordeSize; zombieNb++)
 	{
-		horde[i].announce();
+		horde[zombieNb].announce();
 	}
 
 	delete [] horde;

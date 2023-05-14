@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/22 15:22:56 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/04/22 15:23:41 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/05/01 19:02:43 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 
 void randomChump(std::string name)
 {
-	Zombie zombie(name);
+	Zombie zombie;
 
+	zombie.setName(name);
 	zombie.announce();
 
 	return;
