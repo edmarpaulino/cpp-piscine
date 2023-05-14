@@ -6,7 +6,7 @@
 #    By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/20 19:30:24 by edpaulin          #+#    #+#              #
-#    Updated: 2023/04/21 18:39:32 by edpaulin         ###   ########.fr        #
+#    Updated: 2023/04/21 18:56:44 by edpaulin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,11 +40,5 @@ fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
-
-checker: $(NAME)
-	./$(NAME) > today.log
-	$(CC) $(CFLAGS) checker.cpp -o checker
-	./checker
-	rm -rf checker
 
 .PHONY: all clean fclean re

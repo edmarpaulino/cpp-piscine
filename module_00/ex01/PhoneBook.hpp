@@ -6,14 +6,14 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 16:17:47 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/04/19 20:27:49 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/04/21 19:51:27 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHONEBOOK_H
 # define PHONEBOOK_H
 
-# define MAX_CONTACTS 3
+# define MAX_CONTACTS 8
 # define LAST (MAX_CONTACTS - 1)
 # define WIDTH 10
 # define SPACE ' '
@@ -47,8 +47,6 @@ class PhoneBook
 		std::string _nickname;
 		std::string _phoneNumber;
 		std::string _darkestSecret;
-
-		void _printAllContacts(void) const;
 
 		void _requestAllFields(void);
 		void _requestField(std::string prompt, std::string& fieldStorage);

@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 20:55:39 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/04/21 18:02:08 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/04/21 20:10:32 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,13 @@ _amount(initial_deposit),
 _nbDeposits(0),
 _nbWithdrawals(0)
 {
-	Account::_nbAccounts++;
-	Account::_totalAmount += initial_deposit;
+	t::_nbAccounts++;
+	t::_totalAmount += initial_deposit;
 	
-	this->_accountIndex = Account::_nbAccounts - 1;
+	this->_accountIndex = t::_nbAccounts - 1;
 
-	Account::_displayTimestamp();
+	t::_displayTimestamp();
+	
 	std::cout << "index:" << this->_accountIndex
 		<< ";amount:" << this->_amount
 		<< ";created" << std::endl;
@@ -43,19 +44,23 @@ _amount(0),
 _nbDeposits(0),
 _nbWithdrawals(0)
 {
-	Account::_nbAccounts++;
-	this->_accountIndex = Account::_nbAccounts - 1;
+	t::_nbAccounts++;
 	
-	Account::_displayTimestamp();
+	this->_accountIndex = t::_nbAccounts - 1;
+	
+	t::_displayTimestamp();
+	
 	std::cout << "index:" << this->_accountIndex
 		<< ";amount:" << this->_amount
 		<< ";created" << std::endl;
+		
 	return;
 }
 
 Account::~Account(void)
 {
-	Account::_displayTimestamp();
+	t::_displayTimestamp();
+	
 	std::cout << "index:" << this->_accountIndex
 		<< ";amount:" << this->_amount
 		<< ";closed" << std::endl;
@@ -65,31 +70,32 @@ Account::~Account(void)
 
 int Account::getNbAccounts(void)
 {
-	return Account::_nbAccounts;
+	return t::_nbAccounts;
 }
 
 int Account::getTotalAmount(void)
 {
-	return Account::_totalAmount;
+	return t::_totalAmount;
 }
 
 int Account::getNbDeposits(void)
 {
-	return Account::_totalNbDeposits;
+	return t::_totalNbDeposits;
 }
 
 int Account::getNbWithdrawals(void)
 {
-	return Account::_totalNbWithdrawals;
+	return t::_totalNbWithdrawals;
 }
 
 void Account::displayAccountsInfos(void)
 {
 	Account::_displayTimestamp();
-	std::cout << "accounts:" << Account::_nbAccounts
-		<< ";total:" << Account::_totalAmount
-		<< ";deposits:" << Account::_totalNbDeposits
-		<< ";withdrawals:" << Account::_totalNbWithdrawals
+	
+	std::cout << "accounts:" << t::_nbAccounts
+		<< ";total:" << t::_totalAmount
+		<< ";deposits:" << t::_totalNbDeposits
+		<< ";withdrawals:" << t::_totalNbWithdrawals
 		<< std::endl;
 
 	return;
@@ -97,12 +103,15 @@ void Account::displayAccountsInfos(void)
 
 void Account::makeDeposit(int deposit)
 {
-	Account::_totalAmount += deposit;
+	t::_totalAmount += deposit;
+	t::_totalNbDeposits++;
+	
 	int p_amount = this->_amount;
 	this->_amount += deposit;
 	this->_nbDeposits++;
-	Account::_totalNbDeposits++;
-	Account::_displayTimestamp();
+	
+	t::_displayTimestamp();
+	
 	std::cout << "index:" << this->_accountIndex
 		<< ";p_amount:" << p_amount
 		<< ";deposit:" << deposit
@@ -115,8 +124,10 @@ void Account::makeDeposit(int deposit)
 
 bool Account::makeWithdrawal(int withdrawal)
 {
-	Account::_displayTimestamp();
 	int p_amount = this->_amount;
+	
+	t::_displayTimestamp();
+
 	if (this->_amount - withdrawal <= 0)
 	{
 		std::cout << "index:" << this->_accountIndex
@@ -127,10 +138,12 @@ bool Account::makeWithdrawal(int withdrawal)
 		return false;
 	}
 	
+	t::_totalAmount -= withdrawal;
+	t::_totalNbWithdrawals++;
+	
 	this->_amount -= withdrawal;
-	Account::_totalAmount -= withdrawal;
 	this->_nbWithdrawals++;
-	Account::_totalNbWithdrawals++;
+	
 	std::cout << "index:" << this->_accountIndex
 		<< ";p_amount:" << p_amount
 		<< ";withdrawal:" << withdrawal
@@ -148,7 +161,8 @@ int Account::checkAmount(void) const
 
 void Account::displayStatus(void) const
 {
-	Account::_displayTimestamp();
+	t::_displayTimestamp();
+	
 	std::cout << "index:" << this->_accountIndex
 		<< ";amount:" << this->_amount
 		<< ";deposits:" << this->_nbDeposits

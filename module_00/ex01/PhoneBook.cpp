@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 16:22:47 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/04/19 20:44:00 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/04/21 20:01:14 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,12 +133,12 @@ void PhoneBook::_requestPhoneField(std::string field, std::string& fieldStorage)
 	return;
 }
 
-bool PhoneBook::_hasOnlyNumbers(std::string fieldStorage) const
+bool PhoneBook::_isEmptyField(std::string fieldStorage) const
 {
 	std::string::iterator it;
 	for (it = fieldStorage.begin(); it != fieldStorage.end(); it++)
 	{
-		if (!std::isdigit(*it))
+		if (!std::isspace(*it))
 		{
 			return false;
 		}
@@ -147,12 +147,12 @@ bool PhoneBook::_hasOnlyNumbers(std::string fieldStorage) const
 	return true;
 }
 
-bool PhoneBook::_isEmptyField(std::string fieldStorage) const
+bool PhoneBook::_hasOnlyNumbers(std::string fieldStorage) const
 {
 	std::string::iterator it;
 	for (it = fieldStorage.begin(); it != fieldStorage.end(); it++)
 	{
-		if (!std::isspace(*it))
+		if (!std::isdigit(*it))
 		{
 			return false;
 		}
@@ -251,6 +251,8 @@ void PhoneBook::_truncateString(std::string& str) const
 		str.resize(WIDTH);
 		str[WIDTH - 1] = '.';
 	}
+
+	return;
 }
 
 int PhoneBook::_validateSearchIndex(std::string searchIndex) const

@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 20:05:48 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/04/15 15:55:18 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/04/21 19:27:41 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,10 @@ int main(int argc, char *argv[])
 			*it = toupper(*it);
 		}
 
-		std::cout << str << std::endl;
+		std::cout << str;
 	}
+
+	std::cout << std::endl;
 	
 	return 0;
 }
