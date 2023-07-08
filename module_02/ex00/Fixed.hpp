@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 21:23:23 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/06/01 20:00:03 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/07/06 19:09:31 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ class Fixed
 		Fixed(void);
 
 		// Copy constructor
-		Fixed(const Fixed &src);
+		Fixed(const Fixed &rhs);
 
 		// Copy assignment operator
-		Fixed &operator=(const Fixed &src);
+		Fixed &operator=(const Fixed &rhs);
 		
 		// Destructor
 		~Fixed(void);

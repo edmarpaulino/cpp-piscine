@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 21:23:23 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/06/01 20:37:28 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/07/06 20:46:24 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ class Fixed
 		Fixed(void);
 		Fixed(const int raw);
 		Fixed(const float raw);
-		Fixed(const Fixed &src);
-		Fixed &operator=(const Fixed &src);
+		Fixed(const Fixed &rhs);
+		Fixed &operator=(const Fixed &rhs);
 		~Fixed(void);
 
 

@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 21:30:57 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/06/01 20:43:20 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/07/07 20:57:48 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 Fixed::Fixed(void): _rawBits(0)
 {
-    std::cout << "Default constructor called" << std::endl;
+	std::cout << "Default constructor called" << std::endl;
 
 	return;
 }
@@ -37,22 +37,22 @@ Fixed::Fixed(const float raw)
 	return;
 }
 
-Fixed::Fixed(const Fixed &src)
+Fixed::Fixed(const Fixed &rhs)
 {
 	std::cout << "Copy constructor called" << std::endl;
 
-	*this = src;
+	*this = rhs;
 
 	return;
 }
 
-Fixed &Fixed::operator=(const Fixed &src)
+Fixed &Fixed::operator=(const Fixed &rhs)
 {
 	std::cout << "Copy assignment operator called" << std::endl;
 
-	if (this != &src)
+	if (this != &rhs)
 	{
-		this->_rawBits = src.getRawBits();
+		this->_rawBits = rhs.getRawBits();
 	}
 
 	return *this;
@@ -91,9 +91,9 @@ float Fixed::toFloat(void) const
 	return (float)this->_rawBits / (1 << this->_nbFractBits);
 }
 
-std::ostream &operator<<(std::ostream &o, const Fixed &src)
+std::ostream &operator<<(std::ostream &ost, const Fixed &src)
 {
-	o << src.toFloat();
+	ost << src.toFloat();
 
-	return o;
+	return ost;
 }
