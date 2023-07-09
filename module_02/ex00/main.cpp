@@ -6,15 +6,14 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 20:58:29 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/05/31 21:30:46 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/07/09 17:52:38 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include "Fixed.hpp"
 
-int main(void)
-{
+int main(void) {
 	Fixed a;
 	Fixed b( a );
 	Fixed c;

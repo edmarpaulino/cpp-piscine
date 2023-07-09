@@ -6,15 +6,14 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 20:58:29 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/06/01 20:35:24 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/07/09 17:54:02 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include "Fixed.hpp"
 
-int main(void)
-{
+int main(void) {
 	Fixed a;
 	Fixed const b(10);
 	Fixed const c(42.42f);

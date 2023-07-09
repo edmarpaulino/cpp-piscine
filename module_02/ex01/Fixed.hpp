@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 21:23:23 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/07/06 20:46:24 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/07/09 17:54:24 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,8 @@
 #include <iostream>
 #include <cmath>
 
-class Fixed
-{
+class Fixed {
 	public:
-	
 		Fixed(void);
 		Fixed(const int raw);
 		Fixed(const float raw);
