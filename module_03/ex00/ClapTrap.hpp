@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 20:39:17 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/07/16 17:22:15 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/07/19 19:20:39 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 
 class ClapTrap {
 public:
+  ClapTrap(void);
   ClapTrap(std::string name);
   ClapTrap(const ClapTrap &rhs);
   ~ClapTrap(void);

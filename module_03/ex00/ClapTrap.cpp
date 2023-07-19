@@ -6,14 +6,22 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 20:39:15 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/07/16 18:52:16 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/07/19 19:22:40 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
+ClapTrap::ClapTrap(void) {
+  std::cout << "ClapTrap default constructor called!" << std::endl;
+  this->_name = "ClapTrap";
+  this->_hitPoints = 10;
+  this->_energyPoints = 10;
+  this->_attackDamage = 0;
+}
+
 ClapTrap::ClapTrap(std::string name) {
-  std::cout << "ClapTrap constructor called!" << std::endl;
+  std::cout << "ClapTrap string constructor called!" << std::endl;
   this->_name = name;
   this->_hitPoints = 10;
   this->_energyPoints = 10;
