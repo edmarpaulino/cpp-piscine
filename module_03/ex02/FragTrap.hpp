@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/23 19:42:14 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/07/23 19:57:05 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/07/24 18:53:37 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,7 @@ public:
 
   void highFivesGuys(void);
 };
+
+std::ostream &operator<<(std::ostream &o, const FragTrap &rhs);
 
 #endif // FRAG_TRAP_H
