@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 20:39:15 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/07/23 19:38:51 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/07/24 21:12:29 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,9 +167,6 @@ void ClapTrap::beRepaired(unsigned int amount) {
       << " hit points!" << std::endl;
 
     this->_hitPoints += amount;
-    if (this->_hitPoints > 10) {
-      this->_hitPoints = 10;
-    }
     this->_energyPoints--;
   }
 }

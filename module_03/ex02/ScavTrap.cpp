@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 18:59:36 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/07/23 19:38:41 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/07/24 20:43:17 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,7 @@ void ScavTrap::guardGate(void) {
       << this->_name
       << " is now in gate keeper mode."
       << std::endl;
+    this->_energyPoints--;
   }
 }
 

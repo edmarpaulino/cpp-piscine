@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/23 19:47:44 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/07/24 18:58:07 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/07/24 20:48:52 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,22 @@ FragTrap &FragTrap::operator=(const FragTrap &rhs) {
 }
 
 void FragTrap::highFivesGuys(void) {
-  std::cout
-    << "FragTrap " << this->_name
-    << " asks for a high five!" << std::endl;
+  if (this->isDead()) {
+    std::cout
+      << "FragTrap " << this->_name
+      << " cannot ask for a high five because it is dead!"
+      << std::endl;
+  } else if (!this->hasEnergy()) {
+    std::cout
+      << "FragTrap " << this->_name
+      << " cannot ask for a high five because it has no energy points!"
+      << std::endl;
+  } else {
+    std::cout
+      << "FragTrap " << this->_name
+      << " asks for a high five!" << std::endl;
+    this->_energyPoints--;
+  }
 }
 
 std::ostream &operator<<(std::ostream &o, const FragTrap &rhs) {

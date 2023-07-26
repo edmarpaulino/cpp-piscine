@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 19:14:23 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/07/23 19:38:51 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/07/25 13:02:37 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,23 @@ int main(void) {
   ct.takeDamage(st.getAttackDamage());
   st.beRepaired(10);
   st.guardGate();
+
+  std::cout << std::endl;
+  std::cout << ct << std::endl;
+  std::cout << st << std::endl;
+
+  ScavTrap st2;
+
+  for (int i = 0; i < 6; i++) {
+    st2.attack("Pinoquio");
+    st.takeDamage(st2.getAttackDamage());
+  }
+
+  st.guardGate();
+
+  std::cout << std::endl;
+  std::cout << st << std::endl;
+  std::cout << st2 << std::endl;
 
   return 0;
 }
