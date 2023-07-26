@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 21:23:23 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/07/09 17:52:48 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/07/25 21:29:24 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,9 @@
 
 class Fixed {
 	public:
-		// Default constructor
 		Fixed(void);
-		// Copy constructor
 		Fixed(const Fixed &rhs);
-		// Copy assignment operator
 		Fixed &operator=(const Fixed &rhs);
-		// Destructor
 		~Fixed(void);
 
 		int getRawBits(void) const;

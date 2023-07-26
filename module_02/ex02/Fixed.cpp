@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 21:30:57 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/07/09 17:57:17 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/07/25 21:29:12 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ Fixed &Fixed::operator=(const Fixed &rhs) {
 
 Fixed::~Fixed(void) {}
 
-// boolean operators overload
+//  The 6 comparison operators:
 
 bool Fixed::operator>(const Fixed &rhs) const {
   return this->_rawBits > rhs.getRawBits();
@@ -60,7 +60,7 @@ bool Fixed::operator!=(const Fixed &rhs) const {
   return this->_rawBits != rhs.getRawBits();
 }
 
-// arithmetic operators overload
+//  The 4 arithmetic operators:
 
 Fixed Fixed::operator+(const Fixed &rhs) const {
   Fixed f;
@@ -82,11 +82,11 @@ Fixed Fixed::operator*(const Fixed &rhs) const {
 
 Fixed Fixed::operator/(const Fixed &rhs) const {
   Fixed f;
-  f.setRawBits(this->_rawBits / rhs.getRawBits());
+  f.setRawBits((this->_rawBits << this->_nbFractBits) / rhs.getRawBits());
   return f;
 }
 
-// increment operators overload
+//  The 4 increment/decrement:
 
 Fixed &Fixed::operator++(void) {
   ++this->_rawBits;
@@ -129,19 +129,19 @@ float Fixed::toFloat(void) const {
 }
 
 Fixed &Fixed::min(Fixed &f1, Fixed &f2) {
-  return f1.getRawBits() < f2.getRawBits() ? f1 : f2;
+  return f1 < f2 ? f1 : f2;
 }
 
 const Fixed &Fixed::min(const Fixed &f1, const Fixed &f2) {
-  return f1.getRawBits() < f2.getRawBits() ? f1 : f2;
+  return f1 < f2 ? f1 : f2;
 }
 
 Fixed &Fixed::max(Fixed &f1, Fixed &f2) {
-  return f1.getRawBits() > f2.getRawBits() ? f1 : f2;
+  return f1 > f2 ? f1 : f2;
 }
 
 const Fixed &Fixed::max(const Fixed &f1, const Fixed &f2) {
-  return f1.getRawBits() > f2.getRawBits() ? f1 : f2;
+  return f1 > f2 ? f1 : f2;
 }
 
 std::ostream &operator<<(std::ostream &o, const Fixed &rhs) {

@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 21:30:57 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/07/09 17:55:24 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/07/25 21:29:21 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ Fixed::Fixed(const int raw) {
 
 Fixed::Fixed(const float raw) {
 	std::cout << "Float constructor called" << std::endl;
-	this->_rawBits = roundf(raw * (1 << this->_nbFractBits));
+	this->_rawBits = (int)roundf(raw * (1 << this->_nbFractBits));
 }
 
 Fixed::Fixed(const Fixed &rhs) {
