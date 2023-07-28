@@ -6,13 +6,13 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 12:41:21 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/07/27 13:19:07 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/07/27 21:22:14 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Animal.hpp"
 
-Animal::Animal(void): _type("Fox") {
+Animal::Animal(void): _type("Animal") {
   std::cout << "🐾 Animal default constructor called 🔨" << std::endl;
 }
 
