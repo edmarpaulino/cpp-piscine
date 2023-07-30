@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 21:36:46 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/07/30 18:32:36 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/07/30 19:56:05 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,44 +17,36 @@
 #include "Cat.hpp"
 #include "WrongAnimal.hpp"
 #include "WrongCat.hpp"
+#include "Brain.hpp"
 
 void printSeparator(void);
 
 int main(void) {
-	const Animal* meta = new Animal();
-	const Animal* j = new Dog();
-	const Animal* i = new Cat();
+  Brain brain;
 
-  std::cout << j->getType() << " " << std::endl;
-  std::cout << i->getType() << " " << std::endl;
-  i->makeSound();
-  j->makeSound();
-  meta->makeSound();
+  std::cout << brain << std::endl;
 
+  printSeparator();
 
-	printSeparator();
+  Brain brain2(brain);
 
-	const WrongAnimal* wa = new WrongAnimal();
-	const WrongAnimal* wac = new WrongCat();
-	const WrongCat* wc = new WrongCat();
+  printSeparator();
+
+  brain.setIdea(42 - 1, "Marvin");
+  brain2.setIdea(21 - 1, "Mar");
+
+  brain.getIdea(420);
+  brain2.setIdea(420, "Everything");
+
+  printSeparator();
+
+  std::cout << brain << std::endl;
+
+  printSeparator();
   
-  std::cout << wac->getType() << " " << std::endl;
-  std::cout << wc->getType() << " " << std::endl;
-  wa->makeSound();
-  wac->makeSound();
-  wc->makeSound();
+  std::cout << brain2 << std::endl;
 
-	printSeparator();
-
-	delete meta;
-	delete j;
-	delete i;
-
-	printSeparator();
-
-	delete wa;
-	delete wac;
-	delete wc;
+  printSeparator();
 
 	return 0;
 }
