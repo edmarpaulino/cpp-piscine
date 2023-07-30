@@ -6,7 +6,7 @@
 #    By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/25 21:36:29 by edpaulin          #+#    #+#              #
-#    Updated: 2023/07/27 20:50:51 by edpaulin         ###   ########.fr        #
+#    Updated: 2023/07/30 09:00:40 by edpaulin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 
 NAME = animal
 
-SRC = main.cpp Animal.cpp Dog.cpp Cat.cpp
+SRC = main.cpp Animal.cpp Dog.cpp Cat.cpp WrongAnimal.cpp WrongCat.cpp
 
 OBJ_DIR = obj
 OBJ = $(addprefix $(OBJ_DIR)/,$(SRC:.cpp=.o))
