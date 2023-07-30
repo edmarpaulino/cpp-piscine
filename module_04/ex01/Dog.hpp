@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 19:39:08 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/07/30 18:20:04 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/07/30 20:34:15 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #define DOG_HPP
 
 #include "Animal.hpp"
+#include "Brain.hpp"
 
 class Dog: public Animal {
 public:
@@ -23,7 +24,11 @@ public:
 
   Dog &operator=(const Dog &rhs);
 
-  virtual void makeSound(void) const;
+  void makeSound(void) const;
+  Brain *getBrain(void) const;
+
+private:
+  Brain *_brain;
 };
 
 #endif /* DOG_HPP */

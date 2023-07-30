@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 19:48:33 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/07/30 18:35:21 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/07/30 20:35:10 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,18 @@
 Cat::Cat(void) {
   std::cout << "🐱 Cat default constructor called 🔨" << std::endl;
   this->_type = "Cat";
+  this->_brain = new Brain();
 }
 
 Cat::Cat(const Cat &rhs): Animal(rhs) {
   std::cout << "🐱 Cat copy constructor called 🛠️" << std::endl;
   *this = rhs;
+  this->_brain = new Brain(*rhs._brain);
 }
 
 Cat::~Cat(void) {
   std::cout << "🐱 Cat destructor called 💣" << std::endl;
+  delete this->_brain;
 }
 
 Cat &Cat::operator=(const Cat &rhs) {
@@ -35,4 +38,8 @@ Cat &Cat::operator=(const Cat &rhs) {
 
 void Cat::makeSound(void) const {
   std::cout << "🐱 Miau 🐟" << std::endl;
+}
+
+Brain *Cat::getBrain(void) const {
+  return this->_brain;
 }
