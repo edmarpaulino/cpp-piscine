@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 21:36:46 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/07/30 18:32:36 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/07/30 20:50:01 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 #include "WrongAnimal.hpp"
 #include "WrongCat.hpp"
 
-void printSeparator(void);
+void printBabyChickSeparator(void);
 
 int main(void) {
 	const Animal* meta = new Animal();
@@ -32,7 +32,7 @@ int main(void) {
   meta->makeSound();
 
 
-	printSeparator();
+	printBabyChickSeparator();
 
 	const WrongAnimal* wa = new WrongAnimal();
 	const WrongAnimal* wac = new WrongCat();
@@ -44,13 +44,13 @@ int main(void) {
   wac->makeSound();
   wc->makeSound();
 
-	printSeparator();
+	printBabyChickSeparator();
 
 	delete meta;
 	delete j;
 	delete i;
 
-	printSeparator();
+	printBabyChickSeparator();
 
 	delete wa;
 	delete wac;
@@ -59,7 +59,7 @@ int main(void) {
 	return 0;
 }
 
-void printSeparator(void) {
+void printBabyChickSeparator(void) {
   std::cout
     << std::endl
     << "🐣🐥🐣🐥🐣🐥🐣🐥🐣🐥🐣🐥🐣🐥🐣🐥🐣🐥🐣🐥🐣🐥🐣🐥🐣🐥🐣"
