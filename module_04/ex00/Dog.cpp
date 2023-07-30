@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 19:43:49 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/07/27 21:18:09 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/07/30 18:34:54 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ Dog::~Dog(void) {
 Dog	&Dog::operator=(const Dog &rhs) {
   std::cout << "🐶 Dog assignment operator called 🔧" << std::endl;
   if (this != &rhs)
-    this->_type = rhs.getType();
+    this->_type = rhs._type;
   return *this;
 }
 

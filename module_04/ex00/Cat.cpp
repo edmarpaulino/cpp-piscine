@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 19:48:33 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/07/27 21:18:11 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/07/30 18:35:21 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ Cat::~Cat(void) {
 Cat &Cat::operator=(const Cat &rhs) {
   std::cout << "🐱 Cat assignment operator called 🔧" << std::endl;
   if (this != &rhs)
-    this->_type = rhs.getType();
+    this->_type = rhs._type;
   return *this;
 }
 
