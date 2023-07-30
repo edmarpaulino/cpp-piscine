@@ -6,61 +6,63 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 21:36:46 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/07/27 21:21:19 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/07/30 18:32:36 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
+
 #include "Animal.hpp"
 #include "Dog.hpp"
 #include "Cat.hpp"
+#include "WrongAnimal.hpp"
+#include "WrongCat.hpp"
 
 void printSeparator(void);
 
 int main(void) {
-  Animal *ani = new Animal();
-  Dog *dog = new Dog();
-  Cat *cat = new Cat();
+	const Animal* meta = new Animal();
+	const Animal* j = new Dog();
+	const Animal* i = new Cat();
 
-  printSeparator();
+  std::cout << j->getType() << " " << std::endl;
+  std::cout << i->getType() << " " << std::endl;
+  i->makeSound();
+  j->makeSound();
+  meta->makeSound();
+
+
+	printSeparator();
+
+	const WrongAnimal* wa = new WrongAnimal();
+	const WrongAnimal* wac = new WrongCat();
+	const WrongCat* wc = new WrongCat();
   
-  std::cout << *ani << std::endl;
-  std::cout << *dog << std::endl;
-  std::cout << *cat << std::endl;
+  std::cout << wac->getType() << " " << std::endl;
+  std::cout << wc->getType() << " " << std::endl;
+  wa->makeSound();
+  wac->makeSound();
+  wc->makeSound();
 
-  printSeparator();
+	printSeparator();
 
-  ani->makeSound();
-  dog->makeSound();
-  cat->makeSound();
+	delete meta;
+	delete j;
+	delete i;
 
-  printSeparator();
+	printSeparator();
 
-  Animal ani1(*ani);
-  Dog dog1(*dog);
-  Cat cat1(*cat);
+	delete wa;
+	delete wac;
+	delete wc;
 
-  printSeparator();
-  
-  delete ani;
-  delete dog;
-  delete cat;
-
-  printSeparator();
-
-  Animal ani2;
-  Dog dog2;
-  Cat cat2;
-
-  printSeparator();
-
-  ani2 = ani1;
-  dog2 = dog1;
-  cat2 = cat1;
-
-  return 0;
+	return 0;
 }
 
 void printSeparator(void) {
-  std::cout << "🐣🐥🐣🐥🐣🐥🐣🐥🐣🐥🐣🐥🐣🐥🐣🐥🐣🐥🐣" << std::endl;
+  std::cout
+    << std::endl
+    << "🐣🐥🐣🐥🐣🐥🐣🐥🐣🐥🐣🐥🐣🐥🐣🐥🐣🐥🐣🐥🐣🐥🐣🐥🐣🐥🐣"
+    << std::endl
+    << std::endl;
 }
