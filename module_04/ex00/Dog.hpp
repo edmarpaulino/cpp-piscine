@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 19:39:08 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/07/27 21:14:08 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/07/30 18:20:04 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ class Dog: public Animal {
 public:
   Dog(void);
   Dog(const Dog &rhs);
-  virtual ~Dog(void);
+  ~Dog(void);
 
   Dog &operator=(const Dog &rhs);
 
