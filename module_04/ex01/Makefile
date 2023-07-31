@@ -6,13 +6,13 @@
 #    By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/25 21:36:29 by edpaulin          #+#    #+#              #
-#    Updated: 2023/07/30 20:51:38 by edpaulin         ###   ########.fr        #
+#    Updated: 2023/07/30 21:08:02 by edpaulin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 .DEFAULT_GOAL = all
 
-NAME = brain
+NAME = animal
 
 SRC = main.cpp Animal.cpp Dog.cpp Cat.cpp Brain.cpp
 
