@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 19:48:33 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/07/30 20:35:10 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/07/31 19:49:43 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ Cat::Cat(void) {
 
 Cat::Cat(const Cat &rhs): Animal(rhs) {
   std::cout << "🐱 Cat copy constructor called 🛠️" << std::endl;
-  *this = rhs;
   this->_brain = new Brain(*rhs._brain);
+  *this = rhs;
 }
 
 Cat::~Cat(void) {
@@ -31,8 +31,12 @@ Cat::~Cat(void) {
 
 Cat &Cat::operator=(const Cat &rhs) {
   std::cout << "🐱 Cat assignment operator called 🔧" << std::endl;
-  if (this != &rhs)
+  if (this != &rhs) {
     this->_type = rhs._type;
+    for (unsigned int i = 0; i < IDEAS_SIZE; i++) {
+      this->_brain->setIdea(i, rhs._brain->getIdea(i));
+    }
+  }
   return *this;
 }
 

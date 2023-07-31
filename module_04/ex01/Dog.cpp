@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 19:43:49 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/07/30 21:09:19 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/07/31 19:52:33 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ Dog::Dog(void) {
 
 Dog::Dog(const Dog &rhs): Animal(rhs) {
   std::cout << "🐶 Dog copy constructor called 🛠️" << std::endl;
-  *this = rhs;
   this->_brain = new Brain(*rhs._brain);
+  *this = rhs;
 }
 
 Dog::~Dog(void) {
@@ -31,8 +31,12 @@ Dog::~Dog(void) {
 
 Dog	&Dog::operator=(const Dog &rhs) {
   std::cout << "🐶 Dog assignment operator called 🔧" << std::endl;
-  if (this != &rhs)
+  if (this != &rhs) {
     this->_type = rhs._type;
+    for (unsigned int i = 0; i < IDEAS_SIZE; i++) {
+      this->_brain->setIdea(i, rhs._brain->getIdea(i));
+    }
+  }
   return *this;
 }
 

@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 21:36:46 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/07/30 20:52:01 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/07/31 19:57:07 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,16 +90,16 @@ static void testDeepCopy(void) {
 
   printBabyChickSeparator();
 
-  Cat *neko = new Cat;
+  Cat neko;
 
   printTreeSeparator();
 
-  Cat *kitty = new Cat(*neko);
+  Cat kitty;
 
   printBabyChickSeparator();
 
-  Brain *nekoBrain = neko->getBrain();
-  Brain *kittyBrain = kitty->getBrain();
+  Brain *nekoBrain = neko.getBrain();
+  Brain *kittyBrain = kitty.getBrain();
 
   nekoBrain->setIdea(42 - 1, "Moulinette");
   kittyBrain->setIdea(42 - 1, "Norminette");
@@ -116,11 +116,21 @@ static void testDeepCopy(void) {
 
   printBabyChickSeparator();
 
-  delete neko;
+  kitty = neko;
 
-  printTreeSeparator();
-  
-  delete kitty;
+  printBabyChickSeparator();
+
+  std::cout
+    << "🚀 Neko brain - address: " << nekoBrain
+    << " - 42 idea: " << nekoBrain->getIdea(42 - 1)
+    << std::endl;
+
+  std::cout
+    << "🚀 Kitty brain - address: " << kittyBrain
+    << " - 42 idea: " << kittyBrain->getIdea(42 - 1)
+    << std::endl;
+
+  printBabyChickSeparator();
 }
 
 static void printBabyChickSeparator(void) {
