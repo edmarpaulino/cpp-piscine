@@ -6,13 +6,13 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 19:43:49 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/07/30 20:59:36 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/07/30 21:09:53 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Dog.hpp"
 
-Dog::Dog(void): AAnimal() {
+Dog::Dog(void) {
   std::cout << "🐶 Dog default constructor called 🔨" << std::endl;
   this->_type = "Dog";
   this->_brain = new Brain();
