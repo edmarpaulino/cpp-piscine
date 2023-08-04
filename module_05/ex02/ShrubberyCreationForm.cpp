@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 21:38:04 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/08/02 22:49:28 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/08/03 22:00:30 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,21 @@
 ShrubberyCreationForm::ShrubberyCreationForm(void)
 : AForm("ShrubberyCreationForm", 145, 137) {
   std::cout << "📄🌳 ShrubberyCreationForm default constructor called 🔨" << std::endl;
+  
   this->_target = "Unknown";
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(const std::string target)
 : AForm("ShrubberyCreationForm", 145, 137) {
   std::cout << "📄🌳 ShrubberyCreationForm constructor called 🪛" << std::endl;
+  
   this->_target = target;
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &rhs)
 : AForm(rhs) {
   std::cout << "📄🌳 ShrubberyCreationForm copy constructor called 🛠️"  << std::endl;
+  
   *this = rhs;
 }
 
@@ -36,6 +39,7 @@ ShrubberyCreationForm::~ShrubberyCreationForm(void) {
 
 ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationForm &rhs) {
   std::cout << "📄🌳 ShrubberyCreationForm assignment operator called 🔧" << std::endl;
+  
   if (this != &rhs) {
     this->_target = rhs._target;
   }

@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 21:38:10 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/08/02 23:00:47 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/08/03 21:59:23 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,21 @@
 RobotomyRequestForm::RobotomyRequestForm(void)
 : AForm("RobotomyRequestForm", 72, 45) {
   std::cout << "📄🤖 RobotomyRequestForm default constructor called 🔨" << std::endl;
+  
   this->_target = "Unknown";
 }
 
 RobotomyRequestForm::RobotomyRequestForm(const std::string target)
 : AForm("RobotomyRequestForm", 72, 45) {
   std::cout << "📄🤖 RobotomyRequestForm constructor called 🪛" << std::endl;
+  
   this->_target = target;
 }
 
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &rhs)
 : AForm(rhs) {
   std::cout << "📄🤖 RobotomyRequestForm copy constructor called 🛠️"  << std::endl;
+  
   *this = rhs;
 }
 
@@ -56,11 +59,10 @@ void RobotomyRequestForm::execute(const Bureaucrat &executor) const {
   std::srand(std::time(0));
   int wasRobotomized = std::rand() % 2;
 
-  std::cout << "📄🤖 Zzzzzzzzzzzzzzzzzzzzzzzz " << this->_target;
-  if (wasRobotomized) {
-    std::cout << " was robotomized";
-  } else {
-    std::cout << " was not robotomized";
-  }
-  std::cout << " zzzzzzzzzzzzzzzzzzzzzzzzZ" << std::endl;
+  std::cout 
+    << "📄🤖 Zzzzzzzzzzzzzzzzzzzzzzzz "
+    << this->_target
+    <<  (wasRobotomized ? " was " : " was not ")
+    << "robotomized zzzzzzzzzzzzzzzzzzzzzzzzZ"
+    << std::endl;
 }

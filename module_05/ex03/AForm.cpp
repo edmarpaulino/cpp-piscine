@@ -15,6 +15,7 @@
 AForm::AForm(void)
 : _name("Unnamed"), _isSigned(false), _gradeToSign(1), _gradeToExec(1) {
   std::cout << "📄 AForm default constructor called 🔨" << std::endl;
+  
   this->_formType = "AForm";
 }
 

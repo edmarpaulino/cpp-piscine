@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 21:38:16 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/08/03 21:18:07 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/08/03 22:02:17 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 PresidentialPardonForm::PresidentialPardonForm(void)
 : AForm("PresidentialPardonForm", 25, 5) {
   std::cout << "📄🎖️  PresidentialPardonForm default constructor called 🔨" << std::endl;
+  
   this->_target = "Unknown";
   this->_formType = "PresidentialPardonForm";
 }
@@ -22,6 +23,7 @@ PresidentialPardonForm::PresidentialPardonForm(void)
 PresidentialPardonForm::PresidentialPardonForm(const std::string target)
 : AForm("PresidentialPardonForm", 25, 5) {
   std::cout << "📄🎖️  PresidentialPardonForm constructor called 🪛" << std::endl;
+  
   this->_target = target;
   this->_formType = "PresidentialPardonForm";
 }
@@ -29,6 +31,7 @@ PresidentialPardonForm::PresidentialPardonForm(const std::string target)
 PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &rhs)
 : AForm(rhs) {
   std::cout << "📄🎖️  PresidentialPardonForm copy constructor called 🛠️"  << std::endl;
+  
   *this = rhs;
 }
 

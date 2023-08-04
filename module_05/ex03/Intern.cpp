@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 20:14:13 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/08/03 21:40:07 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/08/03 22:01:59 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ Intern &Intern::operator=(const Intern &rhs) {
   std::cout << "🧟 Intern assignment operator called 🔧" << std::endl;
 
   (void)rhs;
+  
   return *this;
 }
 
@@ -57,16 +58,19 @@ AForm *Intern::makeForm(const std::string form, const std::string target) const 
 
 AForm *Intern::makeShrubberyCreationForm(const std::string target) const {
   std::cout << "🧟 Intern creates 📄🌳 ShrubberyCreationForm" << std::endl;
+  
   return new ShrubberyCreationForm(target);
 }
 
 AForm *Intern::makeRobotomyRequestForm(const std::string target) const {
   std::cout << "🧟 Intern creates 📄🤖 RobotomyRequestForm" << std::endl;
+  
   return new RobotomyRequestForm(target);
 }
 
 AForm *Intern::makePresidentialPardonForm(const std::string target) const {
   std::cout << "🧟 Intern creates 📄🎖️  PresidentialPardonForm" << std::endl;
+  
   return new PresidentialPardonForm(target);
 }
 

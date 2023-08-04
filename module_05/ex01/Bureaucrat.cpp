@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 20:35:55 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/08/02 20:55:36 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/08/03 21:54:02 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,17 @@ Bureaucrat::Bureaucrat(void): _name("Unnamed"), _grade(1) {
 
 Bureaucrat::Bureaucrat(const std::string name, int grade): _name(name) {
   std::cout << "🏛️  Bureaucrat constructor called 🪛" << std::endl;
+  
   if (grade < 1) throw GradeTooHighException();
+  
   if (grade > 150) throw GradeTooLowException();
+  
   this->_grade = grade;
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat &rhs) {
   std::cout << "🏛️  Bureaucrat copy constructor called 🛠️" << std::endl;
+  
   *this = rhs;
 }
 
@@ -34,10 +38,12 @@ Bureaucrat::~Bureaucrat(void) {
 
 Bureaucrat &Bureaucrat::operator=(const Bureaucrat &rhs) {
   std::cout << "🏛️  Bureaucrat assignment operator called 🔧" << std::endl;
+  
   if (this != &rhs) {
     const_cast<std::string&>(this->_name) = rhs._name;
     this->_grade = rhs._grade;
   }
+  
   return *this;
 }
 
@@ -51,17 +57,20 @@ int Bureaucrat::getGrade(void) const {
 
 void Bureaucrat::incrementGrade(void) {
   if (this->_grade == 1) throw GradeTooHighException();
+  
   this->_grade--;
 }
 
 void Bureaucrat::decrementGrade(void) {
   if (this->_grade == 150) throw GradeTooLowException();
+  
   this->_grade++;
 }
 
 void Bureaucrat::signForm( Form &form) const {
   try {
     form.beSigned(*this);
+    
     std::cout
       << "🏛️  Bureaucrat "
       << this->_name

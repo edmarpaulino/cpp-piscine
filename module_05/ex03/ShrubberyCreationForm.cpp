@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 21:38:04 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/08/03 21:18:49 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/08/03 22:03:16 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 ShrubberyCreationForm::ShrubberyCreationForm(void)
 : AForm("ShrubberyCreationForm", 145, 137) {
   std::cout << "📄🌳 ShrubberyCreationForm default constructor called 🔨" << std::endl;
+  
   this->_target = "Unknown";
   this->_formType = "ShrubberyCreationForm";
 }
@@ -22,6 +23,7 @@ ShrubberyCreationForm::ShrubberyCreationForm(void)
 ShrubberyCreationForm::ShrubberyCreationForm(const std::string target)
 : AForm("ShrubberyCreationForm", 145, 137) {
   std::cout << "📄🌳 ShrubberyCreationForm constructor called 🪛" << std::endl;
+  
   this->_target = target;
   this->_formType = "ShrubberyCreationForm";
 }
@@ -29,6 +31,7 @@ ShrubberyCreationForm::ShrubberyCreationForm(const std::string target)
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &rhs)
 : AForm(rhs) {
   std::cout << "📄🌳 ShrubberyCreationForm copy constructor called 🛠️"  << std::endl;
+  
   *this = rhs;
 }
 
@@ -38,6 +41,7 @@ ShrubberyCreationForm::~ShrubberyCreationForm(void) {
 
 ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationForm &rhs) {
   std::cout << "📄🌳 ShrubberyCreationForm assignment operator called 🔧" << std::endl;
+  
   if (this != &rhs) {
     this->_target = rhs._target;
   }
