@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 20:35:55 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/08/03 21:56:31 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/08/04 21:31:11 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ void Bureaucrat::executeForm(const AForm &form) {
     std::cout
       << "🏛️  Bureaucrat "
       << this->_name
-      << " execute "
+      << " executed "
       << form.getName()
       << std::endl;
   } catch (std::exception &e) {
