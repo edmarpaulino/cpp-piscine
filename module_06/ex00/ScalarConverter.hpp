@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 19:03:56 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/08/17 23:06:48 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/08/19 18:17:11 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,15 @@
 #include <cfloat>
 #include <cstdlib>
 
-// remove this later
-#include <iomanip>
-
 class ScalarConverter {
 public:
   static void convert(const std::string value);
 
 private:
+  static double _value;
+  static double _truncatedValue;
+  static bool _isUnkwnownType;
+
   ScalarConverter(void);
   ScalarConverter(const ScalarConverter &rhs);
   ~ScalarConverter(void);
@@ -41,17 +42,17 @@ private:
   static bool _isInt(const std::string value);
   static bool _isFloat(const std::string value);
   static bool _isDouble(const std::string value);
+
+  static void _resetValues(void);
+  static void _setValues(const std::string value);
+
+  static std::string _getValueAsChar(void);
+  static std::string _getValueAsInt(void);
+  static std::string _getValueAsFloat(void);
+  static std::string _getValueAsDouble(void);
   
-  static void _printNan(void);
-  static void _printInf(std::string sign);
   static void _printInvalidConversion(void);
-  static void _printConversions(const double value);
-
-  static void _printChar(const double value);
-  static void _printInt(const double value);
-  static void _printFloat(const double value);
-  static void _printDouble(const double value);
-
+  static void _printConversion(void);
 };
 
 #endif /* SCALAR_CONVERTER_HPP */

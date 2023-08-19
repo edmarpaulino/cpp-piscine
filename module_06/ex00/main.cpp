@@ -6,15 +6,17 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 17:13:23 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/08/16 22:45:37 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/08/19 18:12:05 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
+#include <cstring>
+
 #include "ScalarConverter.hpp"
-// TODO - tests
+
 int main(int argc, char **argv) {
-  if (argc != 2) {
+  if (argc != 2 || !(strlen(argv[1]) > 0)) {
     std::cout << "Usage: ./convert [input]" << std::endl;
     return 1;
   }

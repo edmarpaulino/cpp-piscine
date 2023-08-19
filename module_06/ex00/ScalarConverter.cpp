@@ -6,11 +6,15 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 19:05:24 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/08/17 23:30:16 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/08/19 18:18:13 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
+
+double ScalarConverter::_value = 0.0;
+double ScalarConverter::_truncatedValue = 0.0;
+bool ScalarConverter::_isUnkwnownType = false;
 
 ScalarConverter::ScalarConverter(void) {}
 
@@ -21,49 +25,26 @@ ScalarConverter::ScalarConverter(const ScalarConverter &rhs) {
 ScalarConverter::~ScalarConverter(void) {}
 
 ScalarConverter &ScalarConverter::operator=(const ScalarConverter &rhs) {
-  static_cast<void>(rhs);
-
+  if (this != &rhs) {
+    _value = rhs._value;
+    _truncatedValue = rhs._truncatedValue;
+    _isUnkwnownType = rhs._isUnkwnownType;
+  }
+  
   return *this;
 }
 
 void ScalarConverter::convert(const std::string value) {
-  if (value.length() == 0) {
+  std::cout << "convert ~ value: " << value << std::endl;
+  _setValues(value);
+
+  if (_isUnkwnownType) {
     _printInvalidConversion();
-    return;
-  }
-  
-  if (_isNan(value)) {
-    _printNan();
-    return;
+  } else {
+    _printConversion();
   }
 
-  if (_isInf(value)) {
-    _printInf(value[0] == '-' ? "-" : "+");
-    return;
-  }
-
-  if (_isChar(value)) {
-    _printConversions(static_cast<double>(value[0]));
-    return;
-  }
-
-  if (_isInt(value)) {
-    _printConversions(static_cast<double>(std::atoi(value.c_str())));
-    return;
-  }
-
-  if (_isFloat(value)) {
-    std::string tmp = value.substr(0, value.find('f'));
-    _printConversions(static_cast<double>(std::strtod(tmp.c_str(), NULL)));
-    return;
-  }
-
-  if (_isDouble(value)) {
-    _printConversions(static_cast<double>(std::strtod(value.c_str(), NULL)));
-    return;
-  }
-
-  _printInvalidConversion();
+  _resetValues();
 }
 
 bool ScalarConverter::_isNan(const std::string value) {
@@ -103,14 +84,11 @@ bool ScalarConverter::_isInt(const std::string value) {
 }
 
 bool ScalarConverter::_isFloat(const std::string value) {
-  if (value.length() == 0) {
-    return false;
-  }
-
   size_t f = 0;
   size_t dot = 0;
+  size_t length = value.length();
 
-  for (size_t i = 0; i < value.length(); i++) {
+  for (size_t i = 0; i < length; i++) {
     if (i == 0 && (value[i] == '-' || value[i] == '+'))
       continue;
       
@@ -127,20 +105,19 @@ bool ScalarConverter::_isFloat(const std::string value) {
       return false;
   }
 
-  if (f != 1
-    || dot != 1 
-    || value[0] == '.'
-    || value[value.length() - 2] == '.' 
-    || value[value.length() - 1] != 'f')
-    return false;
+  size_t last = length - 1;
+  size_t penult = length - 2;
 
-  return true;
+  return (f == 1 && dot == 1 && value[0] != '.' && value[penult] != '.' && value[last] == 'f');
+
 }
 
 bool ScalarConverter::_isDouble(const std::string value) {
   size_t dot = 0;
+  size_t length = value.length();
+  size_t last = length - 1;
 
-  for (size_t i = 0; i < value.length(); i++) {
+  for (size_t i = 0; i < length; i++) {
     if (i == 0 && (value[i] == '-' || value[i] == '+'))
       continue;
     if (value[i] == '.') {
@@ -152,34 +129,85 @@ bool ScalarConverter::_isDouble(const std::string value) {
       return false;
   }
 
-  if (dot != 1 || value[0] == '.' || value[value.length() - 1] == '.')
-    return false;
-  
-  return true;
+  return (dot == 1 && value[0] != '.' && value[last] != '.');
 }
 
-void ScalarConverter::_printNan(void) {
-  std::cout
-    << "char: impossible"
-    << std::endl
-    << "int: impossible"
-    << std::endl
-    << "float: nanf"
-    << std::endl
-    << "double: nan"
-    << std::endl;
+void ScalarConverter::_resetValues(void) {
+  _value = 0.0;
+  _truncatedValue = 0.0;
+  _isUnkwnownType = false;
 }
 
-void ScalarConverter::_printInf(std::string sign) {
-  std::cout
-    << "char: impossible"
-    << std::endl
-    << "int: impossible"
-    << std::endl
-    << "float: " << sign << "inff"
-    << std::endl
-    << "double: " << sign << "inf"
-    << std::endl;
+void ScalarConverter::_setValues(const std::string value) {
+   if (_isNan(value)) {
+    _value = NAN;
+    _truncatedValue = _value;
+  } else if (_isInf(value)) {
+    _value = (value[0] == '-') ? -INFINITY : INFINITY;
+    _truncatedValue = _value;
+  } else if (_isChar(value)) {
+    _value = static_cast<double>(value[0]);
+    _truncatedValue = _value;
+  } else if (_isInt(value)) {
+    _value = static_cast<double>(std::atoi(value.c_str()));
+    _truncatedValue = _value;
+  } else if (_isFloat(value) || _isDouble(value)) {
+    std::string tmp = value.substr(0, value.find('f'));
+    _value = static_cast<double>(std::strtod(tmp.c_str(), NULL));
+    _truncatedValue = static_cast<double>(static_cast<long long int>(_value));
+  } else {
+    _isUnkwnownType = true;
+  }
+}
+
+std::string ScalarConverter::_getValueAsChar(void) {
+  std::stringstream ss;
+
+  if (_value < 0 || _value > 127 || std::isnan(_value) || std::isinf(_value)) {
+    ss << "impossible";
+  } else if (!isprint(_value)) {
+    ss << "Non displayable";
+  } else {
+    ss << "'" << static_cast<char>(_value) << "'";
+  }
+
+  return ss.str();
+}
+
+std::string ScalarConverter::_getValueAsInt(void) {
+  std::stringstream ss;
+
+  if (_value < INT_MIN || _value > INT_MAX || std::isnan(_value) || std::isinf(_value)) {
+    ss << "impossible";
+  } else {
+    ss << static_cast<int>(_value);
+  }
+
+  return ss.str();
+}
+
+std::string ScalarConverter::_getValueAsFloat(void) {
+  std::stringstream ss;
+
+  if (std::isinf(_value)) {
+    ss << (std::signbit(_value) ? "-inff" : "+inff");
+  } else {
+    ss << static_cast<float>(_value) << (_value - _truncatedValue == 0 ? ".0f" : "f");
+  }
+
+  return ss.str();
+}
+
+std::string ScalarConverter::_getValueAsDouble(void) {
+  std::stringstream ss;
+
+  if (std::isinf(_value)) {
+    ss << (std::signbit(_value) ? "-inf" : "+inf");
+  } else {
+    ss << static_cast<float>(_value) << (_value - _truncatedValue == 0 ? ".0" : "");
+  }
+
+  return ss.str();
 }
 
 void ScalarConverter::_printInvalidConversion(void) {
@@ -194,52 +222,19 @@ void ScalarConverter::_printInvalidConversion(void) {
     << std::endl;
 }
 
-void ScalarConverter::_printConversions(const double value) {
-  _printChar(value);
-  _printInt(value);
-  _printFloat(value);
-  _printDouble(value);
-}
+void ScalarConverter::_printConversion(void) {
+  const std::string valueAsChar = _getValueAsChar();
+  const std::string valueAsInt = _getValueAsInt();
+  const std::string valueAsFloat = _getValueAsFloat();
+  const std::string valueAsDouble = _getValueAsDouble();
 
-void ScalarConverter::_printChar(const double value) {
-  if (value < 0 || value > 127) {
-    std::cout << "char: impossible" << std::endl;
-  } else if (isprint(value)) {
-    std::cout << "char: '" << static_cast<char>(value) << "'" << std::endl;
-  } else {
-    std::cout << "char: Non displayable" << std::endl;
-  }
-}
-
-void ScalarConverter::_printInt(const double value) {
-  if (value < INT_MIN || value > INT_MAX) {
-    std::cout << "int: impossible" << std::endl;
-  } else {
-    std::cout << "int: " << static_cast<int>(value) << std::endl;
-  }
-}
-
-void ScalarConverter::_printFloat(const double value) {
-  if (std::isinf(value) && !std::signbit(value)) {
-    std::cout << "float: +inff" << std::endl;
-    return;
-  }
-  
-  long long int trunc = static_cast<long long int>(value);
-  if (value - static_cast<float>(trunc) == 0)
-    std::cout << "float: " << static_cast<float>(value) << ".0f" << std::endl;
-  else 
-    std::cout << "float: " << static_cast<float>(value) << "f" << std::endl;
-}
-
-void ScalarConverter::_printDouble(const double value) {
-  if (std::isinf(value) && !std::signbit(value)) {
-    std::cout << "double: +inf" << std::endl;
-    return;
-  }
-  long long int trunc = static_cast<long long int>(value);
-  if (value - static_cast<double>(trunc) == 0)
-    std::cout << "double: " << value << ".0" << std::endl;
-  else
-    std::cout << "double: " << value << std::endl;
+  std::cout
+    << "char: " << valueAsChar
+    << std::endl
+    << "int: " << valueAsInt
+    << std::endl
+    << "float: " << valueAsFloat
+    << std::endl
+    << "double: " << valueAsDouble
+    << std::endl;
 }
