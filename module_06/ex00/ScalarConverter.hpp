@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 19:03:56 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/08/20 17:16:41 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/08/20 19:46:58 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,6 @@ private:
   static std::string _getValueAsInt(void);
   static std::string _getValueAsFloat(void);
   static std::string _getValueAsDouble(void);
-  
-  static void _printInvalidConversion(void);
-  static void _printConversion(void);
 };
 
 #endif /* SCALAR_CONVERTER_HPP */
