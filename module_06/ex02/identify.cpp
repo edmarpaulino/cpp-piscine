@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/20 11:02:08 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/08/20 11:48:19 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/08/20 18:05:38 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,19 +33,22 @@ void identify(Base &p) {
   std::string type("Unknown");
   
   try {
-    dynamic_cast<A &>(p);
+    A &a = dynamic_cast<A &>(p);
+    (void)a;
     type = "A";
   } catch (std::exception &e) {}
   
   try {
     if (type != "Unknown") throw std::exception();
-    dynamic_cast<B &>(p);
+    B &b = dynamic_cast<B &>(p);
+    (void)b;
     type = "B";
   } catch (std::exception &e) {}
 
   try {
     if (type != "Unknown") throw std::exception();
-    dynamic_cast<C &>(p);
+    C &c = dynamic_cast<C &>(p);
+    (void)c;
     type = "C";
   } catch (std::exception &e) {}
 
