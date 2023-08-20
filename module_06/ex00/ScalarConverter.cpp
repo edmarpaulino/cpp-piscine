@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 19:05:24 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/08/19 18:18:13 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/08/19 18:33:22 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,8 @@ ScalarConverter &ScalarConverter::operator=(const ScalarConverter &rhs) {
   return *this;
 }
 
-void ScalarConverter::convert(const std::string value) {
-  std::cout << "convert ~ value: " << value << std::endl;
-  _setValues(value);
+void ScalarConverter::convert(const std::string input) {
+  _setValues(input);
 
   if (_isUnkwnownType) {
     _printInvalidConversion();
@@ -47,89 +46,104 @@ void ScalarConverter::convert(const std::string value) {
   _resetValues();
 }
 
-bool ScalarConverter::_isNan(const std::string value) {
-  return (value == "nan" || value == "nanf");
+bool ScalarConverter::_isNan(const std::string input) {
+  return (input == "nan" || input == "nanf");
 }
 
-bool ScalarConverter::_isInf(const std::string value) {
+bool ScalarConverter::_isInf(const std::string input) {
   return (
-    value == "inf"
-    || value == "inff"
-    || value == "+inf"
-    || value == "+inff"
-    || value == "-inf"
-    || value == "-inff"
+    input == "inf"
+    || input == "inff"
+    || input == "+inf"
+    || input == "+inff"
+    || input == "-inf"
+    || input == "-inff"
   );
 }
 
-bool ScalarConverter::_isChar(const std::string value) {
-  return (value.length() == 1 && isprint(value[0]) && !isdigit(value[0]));
+bool ScalarConverter::_isChar(const std::string input) {
+  return (input.length() == 1 && isprint(input[0]) && !isdigit(input[0]));
 }
 
-bool ScalarConverter::_isInt(const std::string value) {
-  if (value.length() == 0 || value.length() > 11) {
+bool ScalarConverter::_isInt(const std::string input) {
+  if (input.length() == 0 || input.length() > 11) {
     return false;
   }
   
-  for (size_t i = 0; i < value.length(); i++) {
-    if (i == 0 && (value[i] == '-' || value[i] == '+'))
+  for (size_t i = 0; i < input.length(); i++) {
+    if (i == 0 && (input[i] == '-' || input[i] == '+')) {
       continue;
-    if (!isdigit(value[i]))
+    }
+
+    if (!isdigit(input[i])) {
       return false;
+    }
   }
 
-  const long int tmp = std::strtol(value.c_str(), NULL, 10);
+  const long int tmp = std::strtol(input.c_str(), NULL, 10);
 
   return (tmp >= INT_MIN && tmp <= INT_MAX);
 }
 
-bool ScalarConverter::_isFloat(const std::string value) {
+bool ScalarConverter::_isFloat(const std::string input) {
   size_t f = 0;
   size_t dot = 0;
-  size_t length = value.length();
+  size_t length = input.length();
 
   for (size_t i = 0; i < length; i++) {
-    if (i == 0 && (value[i] == '-' || value[i] == '+'))
+    if (i == 0 && (input[i] == '-' || input[i] == '+')) {
       continue;
+    }
       
-    if (value[i] == 'f')
+    if (input[i] == 'f') {
       f++;
-      
-    if (value[i] == '.')
-      dot++;
-
-    if (value[i] == 'f' || value[i] == '.')
       continue;
+    }
+      
+    if (input[i] == '.') {
+      dot++;
+      continue;
+    }
 
-    if (!isdigit(value[i]))
+    if (!isdigit(input[i])) {
       return false;
+    }
   }
 
   size_t last = length - 1;
   size_t penult = length - 2;
 
-  return (f == 1 && dot == 1 && value[0] != '.' && value[penult] != '.' && value[last] == 'f');
+  return (
+    f == 1
+    && dot == 1
+    && input[0] != '.'
+    && input[penult] != '.'
+    && input[last] == 'f'
+  );
 
 }
 
-bool ScalarConverter::_isDouble(const std::string value) {
+bool ScalarConverter::_isDouble(const std::string input) {
   size_t dot = 0;
-  size_t length = value.length();
+  size_t length = input.length();
   size_t last = length - 1;
 
   for (size_t i = 0; i < length; i++) {
-    if (i == 0 && (value[i] == '-' || value[i] == '+'))
+    if (i == 0 && (input[i] == '-' || input[i] == '+')) {
       continue;
-    if (value[i] == '.') {
+    }
+
+    if (input[i] == '.') {
       dot++;
       continue;
     }
 
-    if (!isdigit(value[i]))
+    if (!isdigit(input[i])) {
       return false;
+    }
   }
 
-  return (dot == 1 && value[0] != '.' && value[last] != '.');
+  return (dot == 1 && input[0] != '.' && input[last] != '.');
 }
 
 void ScalarConverter::_resetValues(void) {
@@ -138,21 +152,21 @@ void ScalarConverter::_resetValues(void) {
   _isUnkwnownType = false;
 }
 
-void ScalarConverter::_setValues(const std::string value) {
-   if (_isNan(value)) {
+void ScalarConverter::_setValues(const std::string input) {
+   if (_isNan(input)) {
     _value = NAN;
     _truncatedValue = _value;
-  } else if (_isInf(value)) {
-    _value = (value[0] == '-') ? -INFINITY : INFINITY;
+  } else if (_isInf(input)) {
+    _value = (input[0] == '-') ? -INFINITY : INFINITY;
     _truncatedValue = _value;
-  } else if (_isChar(value)) {
-    _value = static_cast<double>(value[0]);
+  } else if (_isChar(input)) {
+    _value = static_cast<double>(input[0]);
     _truncatedValue = _value;
-  } else if (_isInt(value)) {
-    _value = static_cast<double>(std::atoi(value.c_str()));
+  } else if (_isInt(input)) {
+    _value = static_cast<double>(std::atoi(input.c_str()));
     _truncatedValue = _value;
-  } else if (_isFloat(value) || _isDouble(value)) {
-    std::string tmp = value.substr(0, value.find('f'));
+  } else if (_isFloat(input) || _isDouble(input)) {
+    std::string tmp = input.substr(0, input.find('f'));
     _value = static_cast<double>(std::strtod(tmp.c_str(), NULL));
     _truncatedValue = static_cast<double>(static_cast<long long int>(_value));
   } else {
