@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 19:03:56 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/08/19 18:17:11 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/08/20 17:16:41 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,11 @@
 #include <cfloat>
 #include <cstdlib>
 
+#include "ScalarValues.hpp"
+
 class ScalarConverter {
 public:
-  static void convert(const std::string value);
+  static ScalarValues *convert(const std::string value);
 
 private:
   static double _value;

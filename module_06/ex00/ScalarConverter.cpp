@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 19:05:24 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/08/19 18:33:22 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/08/20 16:55:47 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,16 +34,25 @@ ScalarConverter &ScalarConverter::operator=(const ScalarConverter &rhs) {
   return *this;
 }
 
-void ScalarConverter::convert(const std::string input) {
+ScalarValues *ScalarConverter::convert(const std::string input) {
+  _resetValues();
   _setValues(input);
 
   if (_isUnkwnownType) {
-    _printInvalidConversion();
-  } else {
-    _printConversion();
+    return new ScalarValues();
   }
 
-  _resetValues();
+  std::string valueAsChar = _getValueAsChar();
+  std::string valueAsInt = _getValueAsInt();
+  std::string valueAsFloat = _getValueAsFloat();
+  std::string valueAsDouble = _getValueAsDouble();
+
+  return new ScalarValues(
+    valueAsChar,
+    valueAsInt,
+    valueAsFloat,
+    valueAsDouble
+  );
 }
 
 bool ScalarConverter::_isNan(const std::string input) {
@@ -177,12 +186,12 @@ void ScalarConverter::_setValues(const std::string input) {
 std::string ScalarConverter::_getValueAsChar(void) {
   std::stringstream ss;
 
-  if (_value < 0 || _value > 127 || std::isnan(_value) || std::isinf(_value)) {
+  if (_truncatedValue < 0 || _truncatedValue > 127 || std::isnan(_truncatedValue) || std::isinf(_truncatedValue)) {
     ss << "impossible";
-  } else if (!isprint(_value)) {
+  } else if (!isprint(_truncatedValue)) {
     ss << "Non displayable";
   } else {
-    ss << "'" << static_cast<char>(_value) << "'";
+    ss << "'" << static_cast<char>(_truncatedValue) << "'";
   }
 
   return ss.str();
@@ -191,10 +200,10 @@ std::string ScalarConverter::_getValueAsChar(void) {
 std::string ScalarConverter::_getValueAsInt(void) {
   std::stringstream ss;
 
-  if (_value < INT_MIN || _value > INT_MAX || std::isnan(_value) || std::isinf(_value)) {
+  if (_truncatedValue < INT_MIN || _truncatedValue > INT_MAX || std::isnan(_truncatedValue) || std::isinf(_truncatedValue)) {
     ss << "impossible";
   } else {
-    ss << static_cast<int>(_value);
+    ss << static_cast<int>(_truncatedValue);
   }
 
   return ss.str();
@@ -222,33 +231,4 @@ std::string ScalarConverter::_getValueAsDouble(void) {
   }
 
   return ss.str();
-}
-
-void ScalarConverter::_printInvalidConversion(void) {
-  std::cout
-    << "char: impossible"
-    << std::endl
-    << "int: impossible"
-    << std::endl
-    << "float: impossible"
-    << std::endl
-    << "double: impossible"
-    << std::endl;
-}
-
-void ScalarConverter::_printConversion(void) {
-  const std::string valueAsChar = _getValueAsChar();
-  const std::string valueAsInt = _getValueAsInt();
-  const std::string valueAsFloat = _getValueAsFloat();
-  const std::string valueAsDouble = _getValueAsDouble();
-
-  std::cout
-    << "char: " << valueAsChar
-    << std::endl
-    << "int: " << valueAsInt
-    << std::endl
-    << "float: " << valueAsFloat
-    << std::endl
-    << "double: " << valueAsDouble
-    << std::endl;
 }
