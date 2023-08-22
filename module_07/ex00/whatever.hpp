@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   templates.hpp                                      :+:      :+:    :+:   */
+/*   whatever.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 21:21:23 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/08/21 21:33:58 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/08/21 21:54:04 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TEMPLATES_HPP
-#define TEMPLATES_HPP
+#ifndef WHATEVER_HPP
+#define WHATEVER_HPP
 
 template <typename T>
 void swap(T &a, T &b) {
@@ -30,4 +30,4 @@ T max(T a, T b) {
   return (a > b ? a : b);
 }
 
-#endif /* TEMPLATES_HPP */
+#endif /* WHATEVER_HPP */
