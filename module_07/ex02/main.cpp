@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 22:48:31 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/08/22 20:19:46 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/08/22 21:07:33 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ static void testInt(void);
 static void testFloat(void);
 static void testDouble(void);
 static void testString(void);
+static void testDefault(void);
 
 int main(void) {
   testSuite();
@@ -69,6 +70,10 @@ static void testSuite(void) {
   printRocketSeparator();
   
   testString();
+  
+  printRocketSeparator();
+  
+  testDefault();
   
   printRocketSeparator();
 }
@@ -222,6 +227,21 @@ static void testString(void) {
   std::cout << arr << std::endl;
 
   arr[arr.size() - 3] = "42";
+
+  std::cout << arr << std::endl;
+}
+
+
+static void testDefault(void) {
+  std::cout << "🧪 DEFAULT 🧪" << std::endl << std::endl;
+  
+  Array<int> arr(8);
+
+  std::cout << "arr.size(): " << arr.size() << std::endl;
+  
+  std::cout << arr << std::endl;
+
+  arr[arr.size() - 3] = 42;
 
   std::cout << arr << std::endl;
 }
