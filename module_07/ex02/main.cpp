@@ -6,11 +6,12 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 22:48:31 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/08/22 21:07:33 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/08/22 21:24:35 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string>
+#include <sstream>
 
 #include "Array.hpp"
 
@@ -25,6 +26,7 @@ static void testFloat(void);
 static void testDouble(void);
 static void testString(void);
 static void testDefault(void);
+static void copyTest(void);
 
 int main(void) {
   testSuite();
@@ -74,6 +76,10 @@ static void testSuite(void) {
   printRocketSeparator();
   
   testDefault();
+  
+  printRocketSeparator();
+  
+  copyTest();
   
   printRocketSeparator();
 }
@@ -219,9 +225,13 @@ static void testString(void) {
   Array<std::string> arr(7);
 
   std::cout << "arr.size(): " << arr.size() << std::endl;
+
+  std::ostringstream ss;
   
   for (unsigned int i = 0; i < arr.size(); i++) {
-    arr[i] = i + 1 + '0';
+    ss << (i + 1);
+    arr[i] = ss.str();
+    ss.str("");
   }
 
   std::cout << arr << std::endl;
@@ -244,4 +254,31 @@ static void testDefault(void) {
   arr[arr.size() - 3] = 42;
 
   std::cout << arr << std::endl;
+}
+
+static void copyTest(void) {
+  std::cout << "🧪 DEFAULT 🧪" << std::endl << std::endl;
+  
+  Array<std::string> arr(9);
+
+  std::cout << "arr.size(): " << arr.size() << std::endl;
+
+  std::ostringstream ss;
+
+  for (unsigned int i = 0; i < arr.size(); i++) {
+    ss << (i + 1);
+    arr[i] = ss.str();
+    ss.str("");
+  }
+  
+  std::cout << arr << std::endl;
+
+  Array<std::string> copy;
+
+  copy = arr;
+
+  copy[arr.size() - 3] = 42;
+
+  std::cout << arr << std::endl;
+  std::cout << copy << std::endl;
 }
