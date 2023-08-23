@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 22:00:48 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/08/22 20:02:33 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/08/22 21:03:18 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,11 @@ class Array {
 public:
   Array(void): _arr(new T[0]), _size(0) {};
   
-  Array(unsigned int n): _arr(new T[n]), _size(n) {};
+  Array(unsigned int n): _arr(new T[n]), _size(n) {
+    for (unsigned int i = 0; i < _size; i++) {
+      _arr[i] = T();
+    }
+  };
   
   Array(Array const &rhs): _arr(new T[rhs._size]), _size(rhs._size) { *this = rhs; };
   
