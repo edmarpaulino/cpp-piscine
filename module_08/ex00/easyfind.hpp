@@ -6,20 +6,20 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 19:30:23 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/09/03 20:26:27 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/09/03 21:03:06 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef EASYFIND_HPP
 #define EASYFIND_HPP
 
-#include <sys/types.h>
+#include <exception>
 
 template <typename T>
-ssize_t  easyfind(T container, int value) {
+typename T::iterator  easyfind(T &container, int value) {
+  throw std::runtime_error("value not found");
   (void)container;
   (void)value;
-  return -1;
 }
 
 #endif /* EASYFIND_HPP */

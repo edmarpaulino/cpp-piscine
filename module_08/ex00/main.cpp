@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 18:49:46 by edpaulin          #+#    #+#             */
-/*   Updated: 2023/09/03 20:40:56 by edpaulin         ###   ########.fr       */
+/*   Updated: 2023/09/03 20:59:34 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,38 +14,39 @@
 #include <vector>
 #include "easyfind.hpp"
 
-static void testNotFound(void);
+static void test(void);
 
 int main(void) {
-  testNotFound();
+  test();
   return 0;
 }
 
-static void testNotFound(void) {
+static void test(void) {
   {
-    const std::string description = "Should return -1 if the first param is an empty container";
+    const std::string description = "Should throw an exception if the first param is an empty container";
+    std::string testResult = "FAIL";
     const std::vector<int> vec;
-    const ssize_t result = easyfind(vec,42);
-    if (result == -1) {
-      std::cout << "PASS";
-    } else {
-      std::cout << "FAIL";
+    try {
+      easyfind(vec,42);
+    } catch (const std::exception &e) {
+      testResult = "PASS";
     }
-    std::cout << " - " << description << std::endl;
+    std::cout << testResult << " - " << description << std::endl;
   }
   {
-    const std::string description = "Should return -1 if the second param is not in the container";
+    const std::string description = "Should throw an exception if the second param is not in the container";
+    std::string testResult = "FAIL";
     std::vector<int> vec;
     for (int i = -10000; i < 10000; i++) {
       if (i == 42) continue;
       vec.push_back(i);
     }
-    const ssize_t result = easyfind(vec, 42);
-    if (result == -1) {
-      std::cout << "PASS";
-    } else {
-      std::cout << "FAIL";
+    try {
+      easyfind(vec,42);
+    } catch (const std::exception &e) {
+      testResult = "PASS";
     }
-    std::cout << " - " << description << std::endl;
+    std::cout << testResult << " - " << description << std::endl;
   }
 }
+
